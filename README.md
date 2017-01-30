@@ -8,8 +8,14 @@ idIoT uses *MoonScript* to make coding easier for NodeMCU development.
 ```moonscript
 -- simple blinking
 led = pin 4
-every second(1), ->
+button = pin 5
+
+blink = every second(1), ->
   if is_high led then low led else high led
+
+on button,
+  pressed: -> high led
+  released: -> low led
 ```
 
 ## Install
