@@ -1,5 +1,5 @@
-gpio.mode 4, 1
-gpio.mode 0, 1
+require 'idiot'
 
-gpio.write 4, 0
-gpio.write 0, 0
+led = pin 4
+every second(1), ->
+  if is_high led then low led else high led

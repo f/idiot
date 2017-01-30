@@ -7,9 +7,10 @@ clean:
 
 build:
 	@echo "Building..."
-	@~/.luarocks/bin/moonc -t ./.build ./src/
-	@echo "Installing EventsEmitter..."
-	@cp ./node_modules/lua-eventemitter/events_simplified.lua ./.build/src/events.lua
+	@echo "Installing idIoT framework..."
+	@cp ./lib/idiot.moon ./src/idiot.moon
+	@$$HOME/.luarocks/bin/moonc -t ./.build ./src/
+	@rm ./src/idiot.moon
 
 upload:
 	@./node_modules/.bin/esp file remove init.lua

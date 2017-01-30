@@ -6,12 +6,10 @@ Easier NodeMCU Environment
 idIoT uses *MoonScript* to make coding easier for NodeMCU development.
 
 ```moonscript
-led = Pin 4
-
--- Simple Blink
-Timer!\every second(1), ->
-  with led
-    if .is_low then .high! else .low!
+-- simple blinking
+led = pin 4
+every second(1), ->
+  if is_high led then low led else high led
 ```
 
 ## Install
