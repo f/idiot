@@ -20,21 +20,24 @@ upload:
 
 reset:
 	@./node_modules/.bin/esp port set /dev/cu.SLAB_USBtoUART
-	@./node_modules/.bin/esp flash ./firmware/firmware.bin
+	@esptool.py -p /dev/cu.SLAB_USBtoUART write_flash 0x0000 ./firmware/firmware.bin
 	@echo "Please replug the NodeMCU in 10 seconds..."
 	@sleep 10
 	@echo "Formatting NodeMCU..."
 	@./node_modules/.bin/esp fs format
 	@./node_modules/.bin/esp fs info
 
-reset_simple:
+reset_base:
 	@./node_modules/.bin/esp port set /dev/cu.SLAB_USBtoUART
-	@./node_modules/.bin/esp flash ./firmware/firmware-simple.bin
+	@esptool.py -p /dev/cu.SLAB_USBtoUART write_flash 0x0000 ./firmware/firmware-base.bin
 	@echo "Please replug the NodeMCU in 10 seconds..."
 	@sleep 10
 	@echo "Formatting NodeMCU with base modules..."
 	@./node_modules/.bin/esp fs format
 	@./node_modules/.bin/esp fs info
+
+recover:
+	@esptool.py -p /dev/cu.SLAB_USBtoUART write_flash 0x0000 ./firmware/firmware-base.bin
 
 force_stop:
 	@./node_modules/.bin/esp run "file.remove('init.lua'); node.restart()"
@@ -46,4 +49,5 @@ install:
 	brew install lua
 	luarocks install moonscript --local
 	npm install
+	pip install esptool
 

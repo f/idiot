@@ -1,23 +1,13 @@
 # 🕹 idIoT
-Easier NodeMCU Environment
+Easier NodeMCU + ESP8266 Environment
 
 ## Overview
 
-idIoT uses *MoonScript* to make coding easier for NodeMCU development.
+idIoT uses **MoonScript** to make coding easier for NodeMCU development.
 
+Writing a blinking LED is **THAT** easy:
 ```moonscript
--- simple blinking
-led = pin 4
-button = pin 5
-
-blink = every second(1), ->
-  if is_high led then low led else high led
-
-on button,
-  pressed: ->
-    stop blink
-    high led
-  released: -> start blink
+every second!, -> toggle pin 4
 ```
 
 ## Install
@@ -34,9 +24,9 @@ make install
 `cjson` `cron` `encoder` `enduser_setup` `file` `gpio`
 `mdns` `net` `node` `tmr` `uart` `websocket` `wifi`
 
-To bundle more modules, please use [https://nodemcu-build.com](NodeMCU Builder).
+To bundle more modules, please use [NodeMCU Builder](https://nodemcu-build.com).
 
-_Please replace `firmware/firmware.bin` with if you build custom firmware._
+**_Please replace `firmware/firmware.bin` with if you build custom firmware._**
 
 ### Install Firmware
 
@@ -44,6 +34,32 @@ Run following command to install new firmware.
 
 ```bash
 make reset
+```
+
+## API
+
+Idiot has simplified API to take control of your board.
+
+### Timer
+
+#### `every delay, function`
+
+```moonscript
+every second!, -> toggle pin 4
+```
+
+#### `wait delay, function`
+
+```moonscript
+wait second!, -> open pin 4
+```
+
+### `second`
+
+```moonscript
+second! -- 1 second
+second(0.5) -- half second
+second 2 -- 2 seconds
 ```
 
 ## License
