@@ -9,7 +9,7 @@ idIoT is an IoT environment based on [NodeMCU + ESP8266](http://nodemcu.com/inde
 
 idIoT uses **MoonScript** to make coding easier for NodeMCU development.
 
-**Writing a blinking LED is **THAT easy:**
+**Writing a blinking LED is _THAT_ easy:**
 ```moonscript
 require 'idiot'
 
