@@ -17,7 +17,7 @@ every second!, -> toggle pin 4
 **Or listening a button press:**
 ```moonscript
 led = pin 0
-on button(5), (pressed)-> if pressed then open led else close led
+on button(5), (pressed)-> toggle led, to: pressed
 ```
 
 **Or you can descriptively create a buzzer beeper:**

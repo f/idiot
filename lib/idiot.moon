@@ -56,8 +56,8 @@ export close = (id, opts = {})->
 
 export is_open   = (id)-> read(id) == opener
 export is_closed = (id)-> read(id) == closer
-export toggle    = (pin)->
-  if is_closed pin then open pin else close pin
+export toggle    = (pin, opts = {to: is_closed(pin)})->
+  if opts\to pin then open pin else close pin
 
 export blink     = (pin, interval = second(1))->
   every interval, -> toggle pin
