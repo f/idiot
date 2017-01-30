@@ -1,0 +1,15 @@
+{
+  "name": "idiot",
+  "version": "0.0.1",
+  "description": "MoonScript on NodeMCU",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fatih Kadir Akın <fatihkadirakin@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "lua-eventemitter": "^1.0.3",
+    "node-esp": "^0.17.0"
+  }
+}
