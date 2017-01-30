@@ -17,9 +17,7 @@ on button,
   pressed: ->
     stop blink
     high led
-  released: ->
-    start blink
-    low led
+  released: -> start blink
 ```
 
 ## Install
