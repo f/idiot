@@ -11,18 +11,19 @@ idIoT uses **MoonScript** to make coding easier for NodeMCU development.
 
 **Writing a blinking LED is **THAT** easy:**
 ```moonscript
-require 'idiot'
-
 every second!, -> toggle pin 4
 ```
 
 **Or listening a button press:**
 ```moonscript
-require 'idiot'
-
 led = pin 0
-
 on button(5), (pressed)-> if pressed then open led else close led
+```
+
+**Or you can descriptively create a buzzer beeper:**
+```moonscript
+buzzer = pin 1
+beep = -> close pin 1, for: seconds(1)
 ```
 
 ## Install (OS X Development Environment)

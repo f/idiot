@@ -2,9 +2,12 @@ export timer_id = -1
 export opener = gpio.LOW
 export closer = gpio.HIGH
 
-export open_means_close = ->
+export reverse = (fn)->
   opener = gpio.HIGH
   closer = gpio.LOW
+  fn!
+  opener = gpio.LOW
+  closer = gpio.HIGH
 
 export every = (delay, fn)->
   timer_id += 1
@@ -20,7 +23,7 @@ export stop = (id)->
   tmr.stop(id)
   timer_id -= 1
 
-export listen = (fn)-> every 50, fn
+export listen = (fn)-> every 24, fn
 export on = (pin, fn)-> listen -> fn is_open pin
 
 export second = (unit = 1)-> unit * 1000
@@ -36,8 +39,21 @@ export button = (id, mode = gpio.INPUT)->
 
 export write     = (id, data)-> gpio.write(id, data)
 export read      = (id)-> gpio.read(id)
-export open      = (id)-> write(id, opener)
-export close     = (id)-> write(id, closer)
+
+export open = (id, opts = {})->
+  if opts\for
+    open(id)
+    wait opts\for, -> close(id)
+  else
+    write(id, opener)
+
+export close = (id, opts = {})->
+  if opts\for
+    close(id)
+    wait opts\for, -> open(id)
+  else
+    write(id, closer)
+
 export is_open   = (id)-> read(id) == opener
 export is_closed = (id)-> read(id) == closer
 export toggle    = (pin)->
