@@ -20,16 +20,22 @@ export stop = (id)->
   tmr.stop(id)
   timer_id -= 1
 
+export listen = (fn)-> every 50, fn
+export on = (pin, fn)-> listen -> fn is_open pin
+
 export second = (unit = 1)-> unit * 1000
 
 export millisecond = (unit)-> unit
 
-export pin = (id, mode = 1)->
-  gpio.mode(id, mode)
+export pin = (id, mode = gpio.OUTPUT, pull = gpio.FLOAT)->
+  gpio.mode(id, mode, pull)
   id
 
+export button = (id, mode = gpio.INPUT)->
+  pin id, mode, gpio.PULLUP
+
 export write     = (id, data)-> gpio.write(id, data)
-export read      = (id)-> gpio.read(id, data)
+export read      = (id)-> gpio.read(id)
 export open      = (id)-> write(id, opener)
 export close     = (id)-> write(id, closer)
 export is_open   = (id)-> read(id) == opener

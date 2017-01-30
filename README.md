@@ -1,16 +1,47 @@
 # 🕹 idIoT
-Easier NodeMCU + ESP8266 Environment
+IoT Made Simple
+
+---
+
+idIoT is an IoT environment based on [NodeMCU + ESP8266](http://nodemcu.com/index_en.html).
 
 ## Overview
 
 idIoT uses **MoonScript** to make coding easier for NodeMCU development.
 
-Writing a blinking LED is **THAT** easy:
+**Writing a blinking LED is **THAT** easy:**
 ```moonscript
+require 'idiot'
+
 every second!, -> toggle pin 4
 ```
 
-## Install
+**Or listening a button press:**
+```moonscript
+require 'idiot'
+
+led = pin 0
+
+on button(5), (pressed)-> if pressed then open led else close led
+```
+
+## Install (OS X Development Environment)
+
+### 1. Download Driver
+First, you need to download [SiLabs Serial Driver](https://www.silabs.com/Support%20Documents/Software/Mac_OSX_VCP_Driver.zip)
+to connect, send and receive data from/to NodeMCU.
+
+### 2. Install Dependencies
+```bash
+brew install lua      # Install Lua via Homebrew
+sudo easy_install pip # You need to have Python PIP
+pip install esptool   # Install ESPTool to interact with NodeMCU
+luarocks install moonscript --local # Install MoonScript
+```
+
+### 3. Download idIoT
+
+idIoT is where the magic starts:
 
 ```bash
 git clone http://github.com/f/idiot.git
@@ -34,6 +65,11 @@ Run following command to install new firmware.
 
 ```bash
 make reset
+```
+### Upload Code
+
+```bash
+make
 ```
 
 ## API
