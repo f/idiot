@@ -34,7 +34,7 @@ make install
 `cjson` `cron` `encoder` `enduser_setup` `file` `gpio`
 `mdns` `net` `node` `tmr` `uart` `websocket` `wifi`
 
-To bundle more modules, please use [https://nodemcu-build.com](NodeMCU Builder).
+To bundle more modules, please use [NodeMCU Builder](https://nodemcu-build.com).
 
 _Please replace `firmware/firmware.bin` with if you build custom firmware._
 
