@@ -1,6 +1,8 @@
 # 🕹 idIoT
 IoT Made Simple
 
+<img width="300" src="./assets/nodemcu.png" alt="NodeMCU">
+
 ---
 
 idIoT is an IoT environment based on [NodeMCU + ESP8266](http://nodemcu.com/index_en.html).
