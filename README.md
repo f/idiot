@@ -14,8 +14,12 @@ blink = every second(1), ->
   if is_high led then low led else high led
 
 on button,
-  pressed: -> high led
-  released: -> low led
+  pressed: ->
+    stop blink
+    high led
+  released: ->
+    start blink
+    low led
 ```
 
 ## Install
