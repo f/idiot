@@ -1,7 +1,4 @@
-# 🕹 idIoT
-IoT Made Simple
-
-<img width="300" src="./assets/nodemcu.png" alt="NodeMCU">
+<img width="800" src="./assets/idiot-logo.png" alt="NodeMCU">
 
 ---
 
