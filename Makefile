@@ -19,10 +19,19 @@ upload:
 
 reset:
 	@./node_modules/.bin/esp port set /dev/cu.SLAB_USBtoUART
-	@./node_modules/.bin/esp flash ./firmware.bin
+	@./node_modules/.bin/esp flash ./firmware/firmware.bin
 	@echo "Please replug the NodeMCU in 10 seconds..."
 	@sleep 10
 	@echo "Formatting NodeMCU..."
+	@./node_modules/.bin/esp fs format
+	@./node_modules/.bin/esp fs info
+
+reset_simple:
+	@./node_modules/.bin/esp port set /dev/cu.SLAB_USBtoUART
+	@./node_modules/.bin/esp flash ./firmware/firmware-simple.bin
+	@echo "Please replug the NodeMCU in 10 seconds..."
+	@sleep 10
+	@echo "Formatting NodeMCU with base modules..."
 	@./node_modules/.bin/esp fs format
 	@./node_modules/.bin/esp fs info
 
