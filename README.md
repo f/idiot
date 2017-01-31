@@ -1,6 +1,7 @@
 <img width="800" src="./assets/idiot-logo.png" alt="idIoT">
-
 ---
+<img width="800" src="./assets/screenshot.png" alt="IoT Made Simple">
+
 idIoT is an IoT environment based on [NodeMCU + ESP8266](http://nodemcu.com/index_en.html).
 NodeMCU is an open-source firmware and development kit that helps 
 you to prototype your IoT product within a few Lua script lines.
